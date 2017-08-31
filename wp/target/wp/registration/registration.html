@@ -1,0 +1,57 @@
+<div>
+	<div>
+		<nav role="navigation" class="horizontal"> 
+		    <a ui-sref="home">Početna strana</a>
+		    <a ui-sref="login">Prijavljivanje</a>
+		    <a ui-sref="registration">Registracija</a>		    
+		</nav>
+		
+	</div>
+	<div class="home">
+	
+		<form name="userReg">
+			<br/><h1 class="centered">Registracija</h1>
+			<br><br>
+
+			<label>Ime: </label>
+			<input name="userReg.name" type="text" ng-model="user.name" 
+				pattern="[A-Za-z]{2,30}" title="Only letters allowed.Minimum size: 2, maximum size: 30." 
+				class="form-control" required/>
+			
+			<label>Prezime: </label>
+			<input name="userReg.surname" type="text" ng-model="user.surname" 
+				pattern="[A-Za-z]{2,30}" title="Only letters allowed.Minimum size: 2, maximum size: 30." 
+				class="form-control" required/>
+			
+			<label>Telefon: </label>
+			<input name="userReg.phone" type="text" ng-model="user.phone" 
+				pattern="[0-9]{6,20}" 
+				title="Allowed characters are numbers.Minimum size: 6, maximum size: 20." 
+				class="form-control" required/>
+	
+			<label>Email: </label>
+			<input name="userReg.email" type="email" ng-model="user.email" class="form-control" required/>
+					
+			<label>Korisničko ime: </label>
+			<input name="userReg.username" type="text" ng-model="user.username" 
+				pattern="[a-zA-Z0-9-_\.]{5,20}" 
+				title="Allowed characters are letters, numbers, - and _. Minimum size: 5, maximum size: 20." 
+				class="form-control" required/>
+	
+			<label>Šifra: </label>
+			<input  name="userReg.password" type="password" ng-model="user.password" class="form-control" required/>
+	
+			<label>Ponovite šifru: </label>
+			<input name="userReg.repeatedPass" type="password" ng-model="repeatedPass" class="form-control" required/>
+	
+					
+			<br><br>
+	
+			<div class="button centered">
+				<button type="submit" class="btn btn-primary" 
+					ng-click="userReg.$valid && registration()">Potvrdi</button>
+			</div><br/><br/><br/>
+		</form>
+		
+	</div>
+</div>

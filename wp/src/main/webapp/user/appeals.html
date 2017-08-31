@@ -1,0 +1,42 @@
+<div>
+	<div ng-show="userProfile==undefined && complaintId==undefined">
+		<div ng-show="user.complaints.length>0">
+			<br/><br/><h1 class="centered">Žalbe:</h1><br/>
+			<table class="forumStyle">
+				<tr>
+					<th>Naziv</th>
+					<th>Datum žalbe</th>
+					<th>Žalbu poslao</th>
+				</tr>
+				<tr ng-repeat="c in user.complaints">
+					<td>
+						<button type="button" class="forumBtn bigText" ng-show="c.forum!=null"
+							ng-click="seeComplaint('forum',c)">Forum: {{c.forum.name}}</button>
+						<button type="button" class="forumBtn bigText" ng-show="c.theme!=null"
+							ng-click="seeComplaint('theme',c)">Tema: {{c.theme.id}}</button>
+						<button type="button" class="forumBtn bigText" ng-show="c.comment!=null"
+							ng-click="seeComplaint('comment',c)">
+							Komentar na: {{c.comment.theme.id}}</button>
+					</td>
+					<td>{{c.date}}</td>
+					<td><button type="button" class="forumBtn" 
+						ng-click="findUser(c.user.username)">
+						{{c.user.username}}</button></td>
+				</tr>
+			</table>
+		</div>
+	</div>
+	
+
+	<div ng-show="user.complaints.length==0 && userProfile==undefined && complaintId==undefined">
+		<br/><h1 class="centered">Nemate žalbe.</h1>
+	</div>	
+	
+	<div ng-show="userProfile!=undefined">
+		<home-profile></home-profile>
+	</div>
+	
+	<div ng-show="complaintId!=undefined && userProfile==undefined">
+		<user-complaint></user-complaint>
+	</div>
+</div>

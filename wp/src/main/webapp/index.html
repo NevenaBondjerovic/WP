@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html ng-app = "app">
+<head>
+	<meta charset="UTF-8">
+    
+    <script src="lib/tether/tether.min.js"></script>   
+    <!--jquery-->
+    <script src="lib/jquery/jquery-2.1.4.min.js"></script>
+    <!--jquery theme for datepicker-->
+    <script src="lib/jquery/smoothness/jquery-ui.min.js"></script>
+    <link href="lib/jquery/smoothness/jquery-ui.min.css" rel="stylesheet" type="text/css" />
+    <!--bootstrap-->
+    <link href="lib/bootstrap/css/bootstrap.min.css" type="text/css" rel="stylesheet"/>
+    <script src="lib/bootstrap/js/bootstrap.min.js"></script>       
+    <!--angular-->
+    <script src="lib/angular/angular.js"></script>
+    <script src="lib/angular/angular-resource.js"></script>
+    <script src="lib/angular/angular-animate.js"></script>
+    <script src="lib/angular/angular-ui-router.min.js"></script>
+    <!--css-->
+	<link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" href="lib/w3/w3.css">		
+    
+	<script src="lib/w3/w3.js"></script>  
+    
+    
+	<script src="app.js"></script>
+	<script src="login/loginController.js"></script>
+	<script src="login/loginService.js"></script>
+	<script src="registration/registrationController.js"></script>
+	<script src="registration/registrationService.js"></script>
+	<script src="user/userController.js"></script>
+	<script src="user/userService.js"></script>
+	<script src="content/contentController.js"></script>
+	<script src="content/contentService.js"></script>
+	<script src="home/homeController.js"></script>
+	<script src="home/homeService.js"></script>
+	
+</head>
+<body class="bg">
+	<div>    
+         	<div ui-view></div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,87 @@
+<div ng-controller="homeController">
+	<div ng-show="user.forums.length>0">
+		<div ng-show="!searchMode">
+			<div ng-show="themes==undefined && comments==undefined && userProfile==undefined && createId==undefined">
+				<br/><br/><h1 class="centered">Praćeni podforumi:</h1><br/>
+				<div>
+					<input type="text" ng-model="searchValue" ng-change="search('forum')"
+						class="form-control" placeholder="Pretraga..."><br/>
+				</div>		 
+				<table class="forumStyle">
+					<tr>
+						<th></th>
+						<th>Naziv podforuma</th>
+						<th>Moderatori</th>
+					</tr>
+					<tr ng-repeat="forum in forums">
+						<td><img ng-show="forum.iconPath!='' && forum.iconPath!=null 
+							&& forum.iconPath!=undefined " 
+							ng-src="{{forum.iconPath}}" height="50" width="50"></td>
+						<td>
+							<button type="button" class="forumBtn bigText" ng-click="findThemes(forum.name)">{{forum.name}}</button>
+							<p>{{forum.description}}</p>
+						</td>
+						<td>
+							<button type="button" class="forumBtn" ng-repeat="man in forum.managers"
+								ng-click="findUser(man.username)">{{man.username}}</button>
+						</td>
+					</tr>
+				
+				</table>
+			</div>
+			
+			<div ng-show="themes!=undefined && comments==undefined
+				&& userProfile==undefined && createId==undefined">
+				<home-themes></home-themes>
+			</div>
+			
+			<div ng-show="createId=='theme'">
+				<new-theme></new-theme>
+			</div>
+			
+			<div ng-show="createId=='forum'">
+				<new-forum></new-forum>
+			</div>
+			
+			<div ng-show="createId=='complaint'">
+				<new-complaint></new-complaint>
+			</div>
+			
+			
+			<div ng-show="comments!=undefined && userProfile==undefined && createId==undefined
+				&& commentTextbox!=5">
+				<home-comments></home-comments>
+			</div>
+			<br/>
+			
+			<div ng-show="userProfile!=undefined">
+				<home-profile></home-profile>
+			</div>
+			<br/>
+	
+			<div ng-show="commentTextbox==5">
+				<change-theme></change-theme>
+			</div><br/>
+					
+	
+		</div>
+		
+		<div ng-show="searchMode">
+			<h1 ng-show="allSearchResult.themes.lenght==0 && allSearchResult.users.lenght==0 
+				&& allSearchResult.forums.length==0">Nema rezultata.</h1>
+			<div ng-show="allSearchResult.themes.lenght!=0 || allSearchResult.users.lenght!=0 
+				|| allSearchResult.forums.length!=0">
+				<search-result></search-result>	
+			</div>	
+		</div>
+	</div>
+	
+	
+	<div ng-show="user.forums.length==0">
+		<br/><h1 class="centered">Nemate praćenih podforuma.</h1>
+	</div>
+
+
+
+	
+</div>

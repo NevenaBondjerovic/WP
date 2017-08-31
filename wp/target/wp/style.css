@@ -1,0 +1,172 @@
+.bg{
+	background: url(images/Forums.png) no-repeat center center fixed;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	color:white;
+	padding-left: 40px;
+	padding-right: 100px;
+	padding-top: 10px;
+	color: white;
+}
+
+.vertical {
+    list-style-type: none;
+    margin: 0;
+    padding: 50px 0px;
+    width: 15%;
+    background-color: #f1f1f1;
+    position: fixed;
+    height: 100%;
+    overflow: auto;
+}
+
+.horizontal {
+    list-style-type: none;
+    padding: 5px 0px;
+    padding-right: 50px;
+    text-align: right;
+    width: 100%;
+    background-color: #f1f1f1;
+    position: fixed;
+    height: 5%;
+    overflow: auto;
+}
+
+.vertical li a{
+    display: block;
+    color: #000;
+    padding: 8px 16px;
+    text-decoration: none;
+}
+
+.horizontal a{
+	color: #000;
+    padding: 8px 16px;
+    text-decoration: none;
+}
+
+.vertical li a.active, .horizontal a.active, .forumStyle a.active, .forumBtn.active{
+    background-color: #4CAF50;
+    color: white;
+}
+
+.vertical li a:hover:not(.active), .horizontal a:hover:not(.active), .forumStyle a:hover:not(.active), 
+.forumBtn:hover:not(.active),.dropbtn:hover, .dropbtn:focus, .dropdown a:hover {
+    background-color: #555;
+    color: white;
+}
+
+.home{
+	padding-left: 20%;
+	padding-top: 40px;
+}
+
+.forumStyle {
+    list-style-type: none;
+    padding: 15px 15px;
+    padding-left: 50px;
+    text-align: left;
+    width: 95%;
+    background-color: #ffdab3;
+    color: black;
+    overflow: auto;
+    border: 1px solid #dddddd;
+}
+
+.forumBtn{
+    background-color: Transparent;
+    background-repeat:no-repeat;
+    border: none;
+    cursor:pointer;
+    overflow: hidden;
+    outline:none;
+}
+
+.forumBtn:disabled {
+    background: #dddddd;
+}
+
+.bigText{
+	font-size: 150%;
+}
+
+.forumStyle tr{
+	height:15%;
+}
+
+.forumStyle tr{
+    border: 2px solid #f1f1f1;
+}
+
+
+.centered{
+    width:500px;
+    margin-right:auto;
+    margin-left:auto;
+}
+
+
+.commentStyle {
+    list-style-type: none;
+    margin-left: 100px;
+    width: 80%;
+    background-color: #91c8ff;
+    color: black;
+    overflow: auto;
+}
+
+.subCommentStyle {
+    list-style-type: none;
+    margin-left: 150px;
+    width: 75%;
+    background-color: #91c8ff;
+    color: black;
+    overflow: auto;
+}
+
+.textLeft{
+    padding-left: 50px;
+	text-align: left;
+}
+
+.textRight{
+    padding-right: 50px;
+	text-align: right;
+}
+
+.darkerBlue{
+    background-color: #71b8ff;
+}
+
+.darkerPink{
+    background-color: #f5b6a0;
+}
+
+.blackText{
+	color: black;
+}
+
+.bigInput{
+	width: 95%;
+	height: 50px;
+}
+
+.padding{
+	padding: 5px 15px;
+}
+
+.grayTable{
+	background-color: #dddddd;
+    border: 1px solid #808080;
+}
+
+.messagePreTag{
+    text-align: left;
+    white-space: pre-line;
+	background-color: #dbdbdb;
+}
+
+
+

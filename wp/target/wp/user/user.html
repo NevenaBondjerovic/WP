@@ -1,0 +1,25 @@
+<div>
+	<nav role="navigation" class="horizontal"> 
+	    <a ui-sref="home">Početna strana</a>
+	    <a ui-sref=".messages" id="msgs" ng-click="setNotSeen()">
+	    	<img src="images/messages.png" style="width:30px;height:25px;">
+	    	<label ng-show="notSeen!=undefined && notSeen>0 && showMsg!=false"
+	    		 ng-model="notSeen">{{notSeen}}</label></a>	
+	    <a ui-sref=".profile" ng-click="initialize()">{{user.username}}</a>
+	    <a ng-click="logout()" ui-sref= "home">
+	    	<span class="glyphicon glyphicon-log-out"></span> Odjava</a>
+	    
+    
+	</nav>
+	
+	<ul role = "navigation" class="vertical">
+		  <li><a ui-sref=".followed" ng-click="initialize()">
+		  	Praćene podforme</a></li>
+		  <li><a ui-sref=".saved" ng-click="initialize()">Liste snimljenih entiteta</a></li>
+		  <li><a ui-sref=".appeals" ng-click="initialize()"
+		  	ng-show="user.role=='ADMINISTRATOR' || user.role=='MANAGER'">Žalbe</a></li>
+	</ul>
+    <div class="home" ui-view></div>
+
+
+</div>

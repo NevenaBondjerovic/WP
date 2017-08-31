@@ -1,0 +1,78 @@
+<button type="button" class="forumBtn" ng-click="back('theme')">  
+	<span class="glyphicon glyphicon-arrow-left"></span> Back </button><br/><br/>
+<div class="forumStyle">
+	<h3 class="centered">
+		<img ng-show="forum.iconPath!='' && forum.iconPath!=null 
+			&& forum.iconPath!=undefined " 
+			ng-src="{{forum.iconPath}}" height="50" width="50"> {{forum.name}}</h3>
+	
+	<textarea class="forumStyle"  
+		ng-show="forum.description!=null && forum.description!=''">{{forum.description}}</textarea>
+	<textarea class="forumStyle"  
+		ng-show="forum.rules!=null && forum.rules!=''">Pravila: 
+{{forum.rules}}</textarea>
+
+	<label class="forumStyle">Odgovorni moderator: <button type="button" class="forumBtn" 
+		ng-click="findUser(forum.manager.username)">
+		{{forum.manager.username}}</button></label>
+	<div class="forumStyle">
+	<label>Moderatori: </label> 
+	<label ng-repeat="m in forum.managers">
+		<button type="button" class="forumBtn" 
+			ng-click="findUser(m.username)">
+			{{m.username}}</button></label>		</div>
+	<div class="textRight">
+		<br/>
+		
+		
+		<button type="button" class="forumBtn darkerPink" 
+			ng-show="user!=undefined && (user.role=='ADMINISTRATOR' || user.username==forum.manager.username)"
+			ng-click="deleteForum(forum.name)">Obriši <span class="glyphicon glyphicon-remove"></span></button>
+		<button type="button" class="forumBtn darkerPink" 
+			ng-show="user!=undefined && saveForum==true"
+			ng-click="saveEntity('forum',forum)">Prati <span class="glyphicon glyphicon-star"></span></button>	
+		<button type="button" class="forumBtn darkerPink" 
+			ng-show="user!=undefined && saveForum==false"
+			ng-click="deleteFollow(forum)">
+			Poništi praćenje <span class="glyphicon glyphicon-star-empty"></span></button>	
+		<button type="button" class="forumBtn darkerPink" 
+			ng-show="user!=undefined"
+			ng-click="showComplaint('complaint','forum',forum)">
+			Žalba <span class="glyphicon glyphicon-pencil"></span></button>	
+	</div>	
+</div>	<br/>
+<div>
+	<h1 class="centered">Teme</h1><br/>
+	<div ng-show="user!=undefined">
+		<button type="button" class="btn btn-default"
+			ng-click="showCreate('theme')">Kreiraj novu temu 
+			 <span class="glyphicon glyphicon-plus"></span></button><br/><br/></div>
+	<div>
+		<input type="text" ng-model="searchValue" ng-change="search('theme')"
+			class="form-control" placeholder="Pretraga..."><br/>
+	</div>		 
+	<table class="forumStyle">
+		<tr>
+			<th>Naziv</th>
+			<th>Autor</th>
+			<th>Likes</th>
+			<th>Dislikes</th>
+		</tr>
+		<tr ng-repeat="theme in themes">
+			<td>
+				<button type="button" class="forumBtn bigText" 
+					ng-click="getTheme(theme.id)">{{theme.title}}</button>
+			</td>
+			<td>
+				<button type="button" class="forumBtn" ng-click="findUser(theme.author.username)">
+						{{theme.author.username}}</button>
+			</td>
+			<td><span class="glyphicon glyphicon-thumbs-up"></span> {{theme.likes}}</td>
+			<td><span class="glyphicon glyphicon-thumbs-down"></span> {{theme.dislikes}}</td>
+		</tr>
+	</table>
+</div>
+
+
+
+

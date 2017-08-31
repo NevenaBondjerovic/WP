@@ -1,0 +1,56 @@
+<div>
+	<div>
+	
+		<form name="userUpdate">
+			<h1 class="centered">Promeni podatke: </h1>
+			<br><br>
+
+			<label>Ime: </label>
+			<input name="userUpdate.name" type="text" ng-model="userCopy.name" 
+				pattern="[A-Za-z]{2,30}" title="Only letters allowed.Minimum size: 2, maximum size: 30."
+				class="form-control" required/>
+	
+			<label>Prezime: </label>
+			<input name="userUpdate.surname" type="text" ng-model="userCopy.surname" 
+				pattern="[A-Za-z]{2,30}" title="Only letters allowed.Minimum size: 2, maximum size: 30."
+				class="form-control" required/>
+			
+			<label>Telefon: </label>
+			<input name="userUpdate.phone" type="text" ng-model="userCopy.phone" 
+				pattern="[0-9]{6,20}" 
+				title="Allowed characters are numbers.Minimum size: 6, maximum size: 20." 
+				class="form-control" required/>
+	
+			<label>Email: </label>
+			<input name="userUpdate.email" type="email" ng-model="userCopy.email" 
+				class="form-control" required/>
+					
+			<label>Korisničko ime: </label>
+			<input name="userUpdate.username" type="text" ng-model="userCopy.username" 
+				pattern="[a-zA-Z0-9-_\.]{5,20}" 
+				title="Allowed characters are letters, numbers, - and _. Minimum size: 5, maximum size: 20."
+				class="form-control" disabled/>
+	
+			<label>Šifra: </label>
+			<input  name="userUpdate.password" type="password" ng-model="userCopy.password" 
+				class="form-control" required/>
+	
+			<label>Ponovite šifru: </label>
+			<input name="userUpdate.repeatedPass" type="password" ng-model="repeatedPass" 
+				class="form-control" required/>
+	
+					
+			<br><br>
+	
+			<div class="button centered">
+				<button type="submit" class="btn btn-primary" 
+					ng-click="userUpdate.$valid && updateUser()">
+					Promeni <span class="glyphicon glyphicon-ok"></span></button>
+				<button type="button" class="btn btn-primary" 
+					ng-click="cancelUpdate()">
+					Odustani <span class="glyphicon glyphicon-remove"></span></button>
+			</div><br/><br/><br/>
+		</form>
+		
+	</div>
+</div>

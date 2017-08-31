@@ -1,0 +1,30 @@
+<button type="button" class="forumBtn" ng-click="back('create')">  
+	<span class="glyphicon glyphicon-arrow-left"></span> Back </button>
+<h1 class="centered">Kreiranje nove žalbe:</h1>
+<div class="centered">
+	<form name="newObject">
+		<div ng-show="newObject.forum!=undefined">
+			<label>Žalba na podforum:</label>
+			<input type="text" class="form-control" value="{{newObject.forum.name}}" disabled><br/>
+		</div>
+		<div ng-show="newObject.theme!=undefined">
+			<label>Žalba na temu:</label>
+			<input type="text" class="form-control" value="{{newObject.theme.title}}" disabled><br/>
+		</div>
+		<div ng-show="newObject.comment!=undefined">
+			<label>Žalba na komentar:</label>
+			<textarea rows="4" cols="50" class="form-control" 
+				disabled>{{newObject.comment.text}}</textarea>
+		<br/><br/>
+		</div>
+		
+		<label>Sadržaj: </label>
+		<textarea rows="4" cols="50" ng-model="newObject.text"  name="newObject.text" 
+			placeholder="Sadržaj..." class="form-control" ng-trim="false" required></textarea>
+		<br/><br/>
+
+		<button type="submit" class="btn btn-default com-sm-3" 
+			ng-click="sendComplaint()">Uloži žalbu</button>
+	</form><br/><br/>
+
+</div>

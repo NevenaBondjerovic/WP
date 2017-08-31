@@ -1,0 +1,90 @@
+<div>
+	<br/>
+	<button type="button" class="forumBtn" ng-click="back('complaint')">  
+		<span class="glyphicon glyphicon-arrow-left"></span> Back </button><br/><br/>
+	
+	<div ng-show="complaintId=='forum'">
+		<h3>Žalba je uložena na forum: </h3>
+		<div class="forumStyle">
+			<h3 class="centered">
+				<img ng-show="complaintObject.forum.iconPath!='' && complaintObject.forum.iconPath!=null 
+					&& complaintObject.forum.iconPath!=undefined " 
+					ng-src="{{complaintObject.forum.iconPath}}" height="50" width="50">
+				 {{complaintObject.forum.name}}</h3>
+			<textarea class="forumStyle" >{{complaintObject.forum.description}}</textarea>
+			<textarea class="forumStyle" >Pravila: 
+{{complaintObject.forum.rules}}</textarea>
+			<label class="forumStyle">Odgovorni moderator: <button type="button" class="forumBtn" 
+				ng-click="findUser(complaintObject.forum.manager.username)">
+				{{complaintObject.forum.manager.username}}</button></label>
+			<div class="forumStyle">
+			<label>Moderatori: </label> 
+			<label ng-repeat="m in complaintObject.forum.managers">
+				<button type="button" class="forumBtn" 
+					ng-click="findUser(complaintObject.forum.manager.username)">
+					{{m.username}}</button></label>		</div>
+		</div>	<br/>
+	</div>	
+	
+	<div ng-show="complaintId=='theme'">
+		<h3>Žalba je uložena na temu: </h3>
+		<div class="forumStyle">
+			<h1 class="centered">{{complaintObject.theme.title}}</h1>
+			<textarea class="forumStyle" >{{complaintObject.theme.text}}</textarea>
+			<div>
+				<div ng-show="complaintObject.theme.type=='PICTURE'" class="centered">
+					<img src="{{complaintObject.theme.content}}" height="300">
+				</div>
+				<div ng-show="complaintObject.theme.type=='LINK'">
+					<a target="_blank" href="{{complaintObject.theme.content}}">
+					{{complaintObject.theme.content}}</a>
+				</div>
+			</div>
+			<label>Forum: {{complaintObject.theme.forum.name}}</br>
+				Autor:<button type="button" class="forumBtn" 
+					ng-click="findUser(complaintObject.theme.author.username)">
+					{{complaintObject.theme.author.username}}</button>
+			</label>
+		</div></br>
+	</div>	
+	
+	<div ng-show="complaintId=='comment'">
+		<h3>Žalba je uložena na komentar: </h3>
+		<div class="forumStyle">
+			<div class="textLeft">
+				<label><button type="button" class="forumBtn"
+					ng-click="findUser(complaintObject.comment.author.username)">
+					{{complaintObject.comment.author.username}}:</br></button></label>
+				<textarea class="forumStyle" >{{complaintObject.comment.text}}</textarea>
+				<label ng-show="complaintObject.comment.commentChanged">changed</label>
+			</div>
+		</div>	<br/>
+	</div>	
+	
+	<h3>Tekst žalbe: </h3>
+	<div class="forumStyle">
+		<textarea rows="4" cols="50" class="forumStyle" 
+				disabled>{{complaintObject.text}}</textarea>
+	</div><br/>
+	
+	<h3>Datum žalbe: </h3>
+	<label>{{complaintObject.date}}</label><br/><br/>
+	
+	<h3>Žalbu poslao: </h3>
+	<button type="button" class="forumBtn"
+			ng-click="findUser(complaintObject.user.username)">
+			{{complaintObject.user.username}}</br></button><br/><br/>
+	
+	<button type="submit" class="btn btn-default com-sm-3" 
+			ng-click=deleteEntity()>Obriši entitet</button>
+	<button type="submit" class="btn btn-default com-sm-3" 
+			ng-click="complaintWarn()">Upozori autora</button>
+	<button type="submit" class="btn btn-default com-sm-3" 
+			ng-click="complaintDecline()">Odbij žalbu</button>	
+	<br/><br/><br/><br/>			
+					
+</div>	
+
+
+
+

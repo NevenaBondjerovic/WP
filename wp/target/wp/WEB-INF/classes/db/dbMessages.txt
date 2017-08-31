@@ -1,0 +1,16 @@
+2,moderator1,mika.mikic,test porukaaa,true
+3,moderator1,moderator1,Dobili smo žalbu na temu koju ste Vi kreirali. Naziv teme: 'prova'.,true
+4,moderator1,moderator1,Žalba na temu: 'prova' je pregledana. Poslato je upozorenje autoru teme.,true
+5,admin,moderator1,Žalba na forum: 'Pravo' je odbijena.,false
+6,admin,moderator1,Na Vaš forum: 'proba' je poslata žalba i taj forum je obrisan.,false
+7,admin,admin,Žalba na forum: 'proba' je pregledana. Forum je obrisan.,false
+8,admin,admin,Na Vaš forum: 'sdl;l' je poslata žalba i taj forum je obrisan.,false
+9,admin,admin,Žalba na forum: 'sdl;l' je pregledana. Forum je obrisan.,false
+10,admin,admin,Na Vaš forum: 'skdlk' je poslata žalba i taj forum je obrisan.,false
+11,admin,admin,Žalba na forum: 'skdlk' je pregledana. Forum je obrisan.,false
+12,admin,admin,Na Vaš forum: 'skdlk' je poslata žalba i taj forum je obrisan.,false
+13,admin,admin,Žalba na forum: 'skdlk' je pregledana. Forum je obrisan.,false
+14,admin,admin,Na Vaš forum: 'dsjkdjk' je poslata žalba i taj forum je obrisan.,false
+15,admin,admin,Žalba na forum: 'dsjkdjk' je pregledana. Forum je obrisan.,false
+16,admin,marko12,Dobili smo žalbu na Vaš komentar: 'Inteligencija ili intelekt (lat. intellectus) je mentalna osobina koja se sastoji od viï¿½e sposobnosti: u?enje iz iskustva{COMMA} adaptiranje na nove situacije{COMMA} shvatanje i razumijevanje novih situacija i koriï¿½?enja ste?enog znanja u interakciji sa okruï¿½enjem.' unutar teme: 'Psihologija Psihicke osobine'. Taj komentar je obrisan.,false
+17,admin,mika.mikic,Žalba na komentar: 'Inteligencija ili intelekt (lat. intellectus) je mentalna osobina koja se sastoji od viï¿½e sposobnosti: u?enje iz iskustva{COMMA} adaptiranje na nove situacije{COMMA} shvatanje i razumijevanje novih situacija i koriï¿½?enja ste?enog znanja u interakciji sa okruï¿½enjem.' je pregledana. Komentar je obrisan.,false

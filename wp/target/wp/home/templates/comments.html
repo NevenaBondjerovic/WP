@@ -1,0 +1,145 @@
+<button type="button" class="forumBtn" ng-click="back('comment')">  
+	<span class="glyphicon glyphicon-arrow-left"></span> Back </button></br></br>
+<div class="forumStyle">
+	<h1 class="centered">{{selectedTheme.title}}</h1>
+	<textarea class="forumStyle">{{selectedTheme.text}}</textarea>
+	<div>
+		<div ng-show="selectedTheme.type=='PICTURE'" class="centered">
+			<img src="{{selectedTheme.content}}" height="300"><br/><br>
+		</div>
+		<div ng-show="selectedTheme.type=='LINK'">
+			<a target="_blank" href="{{selectedTheme.content}}">{{selectedTheme.content}}</a>
+		</div>
+	</div>
+	<label>Forum: {{selectedTheme.forum.name}}</br>
+		Autor:<button type="button" class="forumBtn" 
+			ng-click="findUser(selectedTheme.author.username)">
+			{{selectedTheme.author.username}}</button>
+	</label>
+	<div class="textRight">
+		<button	type="button" class="forumBtn darkerPink"
+				ng-click="showComment(1,undefined)" ng-show="user!=undefined && saved==undefined">
+				Komentariši <span class="glyphicon glyphicon-pencil"></span></button>
+		<button type="button" class="forumBtn darkerPink" 
+			ng-show="user!=undefined && selectedTheme.vote" ng-click="vote('theme','like',selectedTheme)">
+			<span class="glyphicon glyphicon-thumbs-up"></span> {{selectedTheme.likes}}</button>
+		<label ng-show="user==undefined || selectedTheme.vote==false">
+			&nbsp;&nbsp;<span class="glyphicon glyphicon-thumbs-up"></span> {{selectedTheme.likes}}</label>
+		<label ng-show="saved!=undefined">
+			&nbsp;&nbsp;<span class="glyphicon glyphicon-thumbs-up"></span> {{selectedTheme.likes}}</label>
+		<button type="button" class="forumBtn darkerPink" 
+			ng-show="user!=undefined && selectedTheme.vote" ng-click="vote('theme','dislike',selectedTheme)">
+			<span class="glyphicon glyphicon-thumbs-down"></span> {{selectedTheme.dislikes}}</button>
+		 <label ng-show="user==undefined || selectedTheme.vote==false">
+			&nbsp;&nbsp;<span class="glyphicon glyphicon-thumbs-up"></span> {{selectedTheme.dislikes}}</label>
+		<label ng-show="saved!=undefined">
+			&nbsp;&nbsp;<span class="glyphicon glyphicon-thumbs-up"></span> {{selectedTheme.dislikes}}</label>
+		
+		<button ng-show="user!=undefined && (user.username==selectedTheme.author.username
+			|| user.role=='ADMINISTRATOR' || isManager) && saved==undefined" 
+			type="button" class="forumBtn darkerPink" ng-click="deleteTheme()">
+			Obriši <span class="glyphicon glyphicon-remove"></span></button>	
+		<button ng-show="user!=undefined && (user.username==selectedTheme.author.username
+			|| isManager) && saved==undefined" 
+			type="button" class="forumBtn darkerPink" ng-click="showComment(5,selectedTheme)">
+			Izmeni <span class="glyphicon glyphicon-edit"></span></button>
+		<button type="button" class="forumBtn darkerPink" 
+			ng-show="user!=undefined && saveTheme==true && saved==undefined" ng-click="saveEntity('theme',selectedTheme)">
+			Sačuvaj <span class="glyphicon glyphicon-save"></span></button>	
+		<button type="button" class="forumBtn darkerPink" 
+			ng-show="saved!=undefined" ng-click="removeSaved('theme',selectedTheme)">
+			 Obriši <span class="glyphicon glyphicon-remove"></span></button>	
+		<button type="button" class="forumBtn darkerPink" 
+			ng-show="user!=undefined && saved==undefined" ng-click="showComplaint('complaint','theme',selectedTheme)">
+			Žalba <span class="glyphicon glyphicon-pencil"></span></button>	
+	</div>
+</div>
+</br>
+<div ng-show="commentTextbox==1" class="blackText commentStyle padding">
+	<div>
+		<textarea rows="4" cols="50" ng-model="commentTheme.comment" 
+			placeholder="Unesi komentar..." class="bigInput"></textarea>
+	</div>
+	<div class="textRight">
+		<button	type="button" class="forumBtn darkerPink" ng-show="commentTheme.comment!=''"
+			ng-click="sendComment(null)">Komentariši</button>
+		<button	type="button" class="forumBtn darkerPink" ng-show="commentTheme.comment==''"
+			disabled>Komentariši</button>
+	</div>
+</div><br/>
+
+<div ng-repeat="comment in comments">
+	<div class="commentStyle">
+		<div class="textLeft">
+			<label><button type="button" class="forumBtn"
+				ng-click="findUser(comment.author.username)">
+				{{comment.author.username}}:</br></button></label>
+			<textarea class="commentStyle">{{comment.text}}</textarea>
+			<label ng-show="comment.commentChanged">changed</label>
+		</div>
+		<div class="textRight">
+			<button ng-show="comment.subComments.length>0 && comment.subCommentsVisible==false" 
+				type="button" class="forumBtn darkerBlue"
+				ng-click="showSubcomments(comment.id)">
+				Prikaži komentare <span class="glyphicon glyphicon-chevron-down"></span></button>
+			<button ng-show="comment.subComments.length>0 && comment.subCommentsVisible" type="button" class="forumBtn darkerBlue"
+				ng-click="hideSubcomments(comment.id)">
+				Sakrij komentare <span class="glyphicon glyphicon-chevron-up"></span></button>	
+			<button	type="button" class="forumBtn darkerBlue"
+				ng-click="showComment(2,comment)" ng-show="user!=undefined && saved==undefined"">
+				Komentariši <span class="glyphicon glyphicon-pencil"></span></button>
+			<button type="button" class="forumBtn darkerBlue" 
+				ng-show="user!=undefined && comment.vote" ng-click="vote('comment','like',comment)">
+				<span class="glyphicon glyphicon-thumbs-up"></span> {{comment.likes}}</button>
+			<label ng-show="user==undefined || comment.vote==false">
+				&nbsp;&nbsp;<span class="glyphicon glyphicon-thumbs-up"></span> {{comment.likes}}</label>
+			<label ng-show="saved!=undefined">
+				&nbsp;&nbsp;<span class="glyphicon glyphicon-thumbs-up"></span> {{comment.likes}}</label>
+			<button type="button" class="forumBtn darkerBlue" 
+				ng-show="user!=undefined && comment.vote" ng-click="vote('comment','dislike',comment)">
+				<span class="glyphicon glyphicon-thumbs-down"></span> {{comment.dislikes}}</button>
+			 <label ng-show="user==undefined || comment.vote==false">
+				&nbsp;&nbsp;<span class="glyphicon glyphicon-thumbs-up"></span> {{comment.dislikes}}</label>
+			 <label ng-show="saved!=undefined">
+				&nbsp;&nbsp;<span class="glyphicon glyphicon-thumbs-up"></span> {{comment.dislikes}}</label>
+			  
+			<button ng-show="user!=undefined && (user.username==comment.author.username
+				|| user.role=='ADMINISTRATOR' || isManager) && saved==undefined"" 
+				type="button" class="forumBtn darkerBlue" ng-click="deleteComment(comment)">
+				Obriši <span class="glyphicon glyphicon-remove"></span></button>	
+			<button ng-show="user!=undefined && (user.username==comment.author.username
+				|| isManager) && saved==undefined"" 
+				type="button" class="forumBtn darkerBlue" ng-click="showComment(3,comment)">
+				Izmeni <span class="glyphicon glyphicon-edit"></span></button>
+			 <button type="button" class="forumBtn darkerBlue" 
+				ng-show="user!=undefined && comment.saveComment && saved==undefined"" 
+				ng-click="saveEntity('comment',comment)">
+				Sačuvaj <span class="glyphicon glyphicon-save"></span></button>	
+			<button type="button" class="forumBtn darkerBlue" 
+				ng-show="user!=undefined && saved==undefined"" ng-click="showComplaint('complaint','comment',comment)">
+				Žalba <span class="glyphicon glyphicon-pencil"></span></button>		
+		</div><br/>
+		
+		<div ng-show="(commentTextbox==2 || commentTextbox==3) && commentTheme.parent!=undefined 
+			&& commentTheme.parent.id==comment.id" class="blackText subCommentStyle padding">
+			<div>
+				<textarea rows="4" cols="50" ng-model="commentTheme.comment" 
+					placeholder="Unesi komentar..." class="bigInput"></textarea>
+			</div>
+			<div class="textRight">
+				<button	type="button" class="forumBtn darkerBlue" 
+					ng-show="commentTheme.comment!='' && commentTextbox==2"
+					ng-click="sendComment(comment)">Komentariši</button>
+				<button	type="button" class="forumBtn darkerBlue" 
+					ng-show="commentTheme.comment!='' && commentTextbox==3"
+					ng-click="changeComment(comment)">Komentariši</button>
+				<button	type="button" class="forumBtn darkerBlue" ng-show="commentTheme.comment==''"
+					disabled>Komentariši</button>
+			</div>
+		</div><br/>
+	</div><br/>
+	<div ng-show="comment.subCommentsVisible">
+		<home-subComments></home-subComments>
+	</div>
+	<br/>
+</div>

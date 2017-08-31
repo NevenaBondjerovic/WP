@@ -1,0 +1,22 @@
+<button type="button" class="forumBtn" ng-click="back('user')">  
+	<span class="glyphicon glyphicon-arrow-left"></span> Back </button></br></br>
+<div class="centered">
+	<image src="images/user.png"/>
+	<h1>{{userProfile.username}}</h1>
+	<h3>{{userProfile.name}} {{userProfile.surname}}</h3>
+	<label>Tip korisnika: {{userProfile.role}}</label>
+	<button type="button" class="btn btn-default" 
+		ng-show="user!=undefined && user.role=='ADMINISTRATOR' && createId==undefined"
+		ng-click="showCreate('role')">Promeni tip</button>
+	<div ng-show="createId=='role'">
+		<label>Izaberite novi tip korisnika: </label>
+		<select class="form-control" ng-model="newObject.role" required>
+			<option value="USER" ng-selected="newObject.role=='USER'">USER</option>
+			<option value="ADMINISTRATOR" ng-selected="newObject.role=='ADMINISTRATOR'">
+				ADMINISTRATOR</option>
+			<option value="MANAGER" ng-selected="newObject.role=='MANAGER'">MANAGER</option>
+		</select><br/>
+		<button type="button" class="btn btn-default com-sm-3" 
+			ng-click="updateUser(newObject)">Promeni tip</button><br/><br/>
+	</div>	
+</div>

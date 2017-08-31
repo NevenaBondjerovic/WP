@@ -1,0 +1,41 @@
+<button type="button" class="forumBtn" ng-click="back('create')">  
+	<span class="glyphicon glyphicon-arrow-left"></span> Back </button>
+<h1 class="centered">Kreiranje nove teme:</h1>
+<div class="centered">
+	<form name="newObject">
+		<label>Podforum:</label>
+		<input type="text" class="form-control" value="{{forum.name}}" disabled><br/>
+		
+		<label>Naslov: </label>
+		<input type="text" name="newObject.title" ng-model="newObject.title"
+			class="form-control" placeholder="Naslov" ng-trim="false" required><br/>
+		
+		<label>Tip sadržaja: </label>
+		<select class="form-control" name="newObject.type" ng-model="newObject.type" required>
+			<option value="TEXT" ng-selected="true">TEXT</option>
+			<option value="PICTURE">PICTURE</option>
+			<option value="LINK">LINK</option>
+		</select><br/>
+		
+		<label>Sadržaj: </label>
+		<textarea rows="4" cols="50" ng-model="newObject.text"  name="newObject.text" 
+			placeholder="Sadržaj..." class="form-control" ng-trim="false" required></textarea>
+		<input class="form-control" type="file" accept="image/*"
+			ng-show="newObject.type!=undefined && newObject.type=='PICTURE'"
+			name="newObject.chosenFile"  
+			ng-required="newObject.type!=undefined && newObject.type=='PICTURE'"
+        	onchange="angular.element(this).scope().uploadFile(this.files)" app-filereader>
+        <div ng-if = "chosenFile!=undefined">
+            <br/><img ng-src="{{chosenFile}}" width="200" height="150" /><br/><br/>
+        </div>
+		<input class="form-control" type="text" placeholder="Link"
+			ng-show="newObject.type!=undefined && newObject.type=='LINK'"
+			name="newObject.link" ng-model="newObject.link" 
+			ng-required="newObject.type!=undefined && newObject.type=='LINK'">
+		<br/><br/>
+		
+		<button type="submit" class="btn btn-default com-sm-3" 
+			ng-click="saveThemeFunction(newObject.chosenFile)">Kreiraj</button>
+	</form><br/><br/>
+
+</div>

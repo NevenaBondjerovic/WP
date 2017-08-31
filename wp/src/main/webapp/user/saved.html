@@ -1,0 +1,65 @@
+<div>
+	<div ng-show="userProfile==undefined && comments==undefined && selectedComment==undefined">
+		<div ng-show="user.themes.length>0 || user.comments.length>0">
+			<br/><br/><h1 class="centered">Sačuvani entiteti:</h1><br/>
+			<table class="forumStyle">
+				<tr>
+					<th>Naziv</th>
+					<th>Datum</th>
+					<th>Autor</th>
+				</tr>
+				<tr ng-repeat="t in user.themes">
+					<td>
+						<button type="button" class="forumBtn bigText"
+							ng-click="getTheme(t.id)">Tema: {{t.id}}</button>
+					</td>
+					<td>{{t.date}}</td>
+					<td><button type="button" class="forumBtn" 
+						ng-click="findUser(t.author.username)">
+						{{t.author.username}}</button></td>
+				</tr>
+				<tr ng-repeat="c in user.comments">
+					<td>
+						<button type="button" class="forumBtn bigText"
+							ng-click="getComment(c.id)">
+							Komentar na: {{c.theme.id}}</button>
+					</td>
+					<td>{{c.date}}</td>
+					<td><button type="button" class="forumBtn" 
+						ng-click="findUser(c.author.username)">
+						{{c.author.username}}</button></td>
+				</tr>
+			</table>
+		</div>
+		<br/><h1 ng-show="user.themes.length==0 && user.comments.length==0"
+			class="centered">Nemate sačuvane entitete.</h1>
+	</div>
+	<div ng-show="userProfile!=undefined">
+		<br/><home-profile></home-profile>
+	</div>
+	
+	<div ng-show="comments!=undefined && userProfile==undefined">
+		<br/><home-comments></home-comments>
+	</div>
+	
+	<div ng-show="selectedComment!=undefined && userProfile==undefined">
+		<br/><button type="button" class="forumBtn" ng-click="back('comment')">  
+			<span class="glyphicon glyphicon-arrow-left"></span> Back </button></br></br>
+		<h3>Komentar: </h3>
+		<div class="forumStyle">
+			<div class="textLeft">
+				<label><button type="button" class="forumBtn"
+					ng-click="findUser(selectedComment.author.username)">
+					{{selectedComment.author.username}}:</br></button></label>
+				<textarea class="forumStyle">{{selectedComment.text}}</textarea>
+			</div>
+			<div class="textRight">
+				<button type="button" class="forumBtn darkerPink"  
+					ng-click="removeSaved('comment',selectedComment)">
+					 Obriši <span class="glyphicon glyphicon-remove"></span></button>	
+			</div>
+		</div>	<br/>
+	</div>
+	
+	
+</div>

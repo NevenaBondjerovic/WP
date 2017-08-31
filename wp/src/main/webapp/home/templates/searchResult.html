@@ -1,0 +1,78 @@
+<div class="home">
+		<div ng-show="allSearchResult.forums.length>0">
+			<h1 class="centered">Podforumi</h1>
+			<table class="forumStyle">
+				<tr>
+					<th></th>
+					<th>Naziv podforuma</th>
+					<th>Moderatori</th>
+				</tr>
+				<tr ng-repeat="forum in allSearchResult.forums">
+					<td>ikonica</td>
+					<td>
+						<button type="button" class="forumBtn bigText" ng-click="findThemes(forum.name)">{{forum.name}}</button>
+						<p>{{forum.description}}</p>
+					</td>
+					<td>
+						<button type="button" class="forumBtn" ng-repeat="man in forum.managers"
+							ng-click="findUser(man.username)">{{man.username}}</button>
+					</td>
+				</tr>
+			
+			</table>
+		</div>
+		
+		<div ng-show="allSearchResult.themes.length>0">
+			<h1 class="centered">Teme</h1><br/>
+			<table class="forumStyle">
+				<tr>
+					<th>Naziv</th>
+					<th>Autor</th>
+					<th>Likes</th>
+					<th>Dislikes</th>
+				</tr>
+				<tr ng-repeat="theme in allSearchResult.themes">
+					<td>
+						<button type="button" class="forumBtn bigText" 
+							ng-click="getTheme(theme.id)">{{theme.title}}</button>
+					</td>
+					<td>
+						<button type="button" class="forumBtn" ng-click="findUser(theme.author.username)">
+								{{theme.author.username}}</button>
+					</td>
+					<td><span class="glyphicon glyphicon-thumbs-up"></span> {{theme.likes}}</td>
+					<td><span class="glyphicon glyphicon-thumbs-down"></span> {{theme.dislikes}}</td>
+				</tr>
+			</table>
+		</div>
+		
+		<div ng-show="allSearchResult.users.length>0">
+			<h1 class="centered">Korisnici</h1><br/>
+			<table class="forumStyle">
+				<tr>
+					<th>Korisničko ime</th>
+					<th>Ime</th>
+					<th>Prezime</th>
+					<th>Tip korisnika</th>
+				</tr>
+				<tr ng-repeat="user in allSearchResult.users">
+					<td>
+						<button type="button" class="forumBtn" ng-click="findUser(user.username)">
+								{{user.username}}</button></td>
+					<td>{{user.name}}</td>
+					<td>{{user.surname}}</td>
+					<td>{{user.role}}</td>
+				</tr>
+			</table>
+		</div>
+		 
+		<br/><br/><br/>
+		
+		
+</div>
+
+
+
+
+
+

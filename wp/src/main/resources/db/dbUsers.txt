@@ -1,0 +1,6 @@
+admin,pass,Admin,Adminovic,ADMINISTRATOR,065555556,admin@admin.com,02.07.2017.,[Software],[],[],[]
+pera,pass,Pera,Peric,USER,063222444,pera@pera.com,02.07.2017.,[],[],[],[]
+mika.mikic,pass,Mika,Mikic,USER,069222111,mika@mi.com,02.07.2017.,[Pravo;Psihologija],[Software Windows 10],[18],[]
+marko12,pass,Marko,Markovic,USER,064221122,mar@m.com,02.07.2017.,[],[],[],[]
+moderator1,pass,Jovana,Jovanovic,MANAGER,069123456,man1@man.com,02.07.2017.,[Software],[],[3],[]
+moderator2,pass,Imenko,Imenkic,MANAGER,061456456,im@im.com,02.07.2017.,[],[],[],[]

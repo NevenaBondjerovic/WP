@@ -1,0 +1,31 @@
+<div>
+	<div>
+		<nav role="navigation" class="horizontal"> 
+		    <a ui-sref="home">Početna strana</a>
+		    <a ui-sref="login">Prijavljivanje</a>
+		    <a ui-sref="registration">Registracija</a>		    
+		</nav>
+		
+	</div>
+	<div class="home">
+		
+		<form name="loginData">
+			<br/><h1 class="centered">Prijavite se</h1>
+			<br><br>
+	
+			<label>Email: </label>
+			<input name="loginData.username" type="text" class="form-control" ng-model="loginData.username" required/>
+	
+			<label>Šifra: </label>
+			<input name="loginData.password" type="password" class="form-control" ng-model="loginData.password" required/>
+	
+			<br><br>
+	
+			<div class="button centered">
+				<button type="submit" class="btn btn-primary" 
+					ng-click="loginData.$valid && login()">Prijavite se</button>
+			</div>
+		</form>
+		
+	</div>
+</div>

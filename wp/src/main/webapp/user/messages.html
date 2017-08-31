@@ -1,0 +1,72 @@
+<div class="centered">
+	<br/><br/>
+	<div ng-show="selectedUserMessage==undefined && searchResult.length==0">
+		<input type="text" ng-model="searchValue" list="friends"
+					class="blackText centered form-control" placeholder="Nađi korisnika..."
+					ng-enter="search('users',null)">
+		<datalist id="friends">
+		    <option ng-if="u.username!=user.username" ng-repeat="u in users"
+		            value="{{u.username}}">{{u.username}}</option>
+		</datalist>		
+		<br/>	
+					
+		<h1>Poruke</h1><br/>
+		<table>
+			<tr ng-repeat="message in messagesForUser">
+				<td>
+					<button type="button" class="forumBtn centered bigText grayTable blackText" 
+						ng-show="message.seen==false"
+						ng-click="getMessagesForUser(message.user)">
+						<b>{{message.user.username}}</b></button>
+					<button type="button" class="forumBtn centered bigText grayTable blackText" 
+						ng-show="message.seen" 
+						ng-click="getMessagesForUser(message.user)">
+						{{message.user.username}}</button>	
+				</td>
+			</tr>
+		</table>
+	</div>
+	
+	<div ng-show="selectedUserMessage!=undefined">
+		<button type="button" class="forumBtn" ng-click="back('message')">  
+			<span class="glyphicon glyphicon-arrow-left"></span> Back </button><br/><br/>
+		<div ng-repeat="msg in selectedUserMessages">
+			<div class="messagePreTag blackText padding">
+				<b>{{msg.sender.username}}</b>: {{msg.content}}
+				<p ng-show="user.username==msg.sender.username && msg.seen" class="textRight">		
+					<label>Seen</label>
+				</p>
+			</div><br/>
+			
+		</div><br/>
+		<label ng-show="messageSent">Poruka je poslata.	</label>
+		<br ng-show="messageSent"/>
+		<label>Za: {{selectedUserMessage.username}}</label>
+		<div class="blackText grayTable padding">
+			<div>
+				<textarea rows="4" cols="50" ng-model="newMessage" 
+					placeholder="Pošalji poruku..." class="bigInput"></textarea>
+			</div>
+			<div class="textRight">
+				<button	type="button" class="forumBtn darkerBlue" 
+					ng-show="newMessage!=''"
+					ng-click="sendMessage()">Pošalji</button>
+				<button	type="button" class="forumBtn darkerBlue" ng-show="newMessage==''"
+					disabled></button>
+			</div>
+		</div><br/><br/><br/>
+		
+	
+	</div>
+	
+	
+	<div ng-show="searchResult.length>1">
+		<h1>Rezultat pretrage:</h1><br/>
+		<div ng-repeat="u in searchResult" ng-show="u.username!=user.username">
+			<button type="button" class="forumBtn bigText"
+				ng-click="search('users',u)">
+				{{u.username}}</button><br/>
+		</div>		
+	</div>
+	
+</div>

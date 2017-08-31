@@ -1,0 +1,3 @@
+Software,O programima koje koristite ili nameravate koristiti,userImages/Software.png,1.Pravilo 1 neko{EOL}2.Drugo pravilo,admin,[admin]
+Psihologija,Psihologija je nau?na disciplina koja se bavi sistematskim prou?avanjem psihi?kog �ivota (procesa i osobina) ljudi i �ivotinja. Saznanja psihologije po?ivaju na sve vrste podataka.,userImages/psihologija.jpg,,admin,[moderator2;admin]
+Pravo,Pravna pitanja i problemi{COMMA} pravna pomo?{COMMA} javne rasprave o budu?im zakonima,userImages/pravo.jpg,,admin,[moderator1;moderator2;admin]

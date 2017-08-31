@@ -1,0 +1,61 @@
+<div ng-repeat="subCom in comment.subComments">
+	<div class="subCommentStyle" >
+		<div class="textLeft">
+			<label><button type="button" class="forumBtn"
+				ng-click="findUser(subCom.author.username)">
+				{{subCom.author.username}}:</br></button></label>
+			<textarea class="subCommentStyle" >{{subCom.text}}</textarea>
+			<label ng-show="subCom.commentChanged">changed</label>
+		</div>
+		<div class="textRight">
+			<button type="button" class="forumBtn darkerBlue" 
+					ng-show="user!=undefined && subCom.vote" ng-click="vote('comment','like',subCom)">
+					<span class="glyphicon glyphicon-thumbs-up"></span> {{subCom.likes}}</button>
+			<label ng-show="user==undefined || subCom.vote==false">
+				&nbsp;&nbsp;<span class="glyphicon glyphicon-thumbs-up"></span> {{subCom.likes}}</label>
+			<label ng-show="saved!=undefined">
+				&nbsp;&nbsp;<span class="glyphicon glyphicon-thumbs-up"></span> {{subCom.likes}}</label>
+			<button type="button" class="forumBtn darkerBlue" 
+				ng-show="user!=undefined && subCom.vote" ng-click="vote('comment','dislike',subCom)">
+				<span class="glyphicon glyphicon-thumbs-down"></span> {{subCom.dislikes}}</button>
+			 <label ng-show="user==undefined || subCom.vote==false">
+				&nbsp;&nbsp;<span class="glyphicon glyphicon-thumbs-up"></span>
+			 {{subCom.dislikes}}</label>
+			<label ng-show="saved!=undefined">
+				&nbsp;&nbsp;<span class="glyphicon glyphicon-thumbs-up"></span>
+			 {{subCom.dislikes}}</label>
+			 <button ng-show="user!=undefined && (user.username==subCom.author.username
+				|| user.role=='ADMINISTRATOR' || isManager) && saved==undefined" 
+				type="button" class="forumBtn darkerBlue" ng-click="deleteComment(subCom)">
+				Obriši <span class="glyphicon glyphicon-remove"></span></button>
+			<button ng-show="user!=undefined && (user.username==subCom.author.username
+				|| isManager) && saved==undefined" type="button" class="forumBtn darkerBlue" 
+				ng-click="showComment(4,subCom)">
+				Izmeni <span class="glyphicon glyphicon-edit"></span></button>		
+			<button type="button" class="forumBtn darkerBlue" 
+				ng-show="user!=undefined && subCom.saveComment && saved==undefined" 
+				ng-click="saveEntity('comment',subCom)">
+				Sačuvaj <span class="glyphicon glyphicon-save"></span></button>	
+			<button type="button" class="forumBtn darkerBlue" 
+				ng-show="user!=undefined && saved==undefined" 
+				ng-click="showComplaint('complaint','comment',subCom)">
+				Žalba <span class="glyphicon glyphicon-pencil"></span></button>			
+		</div><br/>
+		
+		<div ng-show="commentTextbox==4 && commentTheme.parent!=undefined 
+			&& commentTheme.parent.id==subCom.id" 
+			class="blackText subCommentStyle padding">
+			<div>
+				<textarea rows="4" cols="50" ng-model="commentTheme.comment" 
+					placeholder="Unesi komentar..." class="bigInput"></textarea>
+			</div>
+			<div class="textRight">
+				<button	type="button" class="forumBtn darkerBlue" 
+					ng-show="commentTheme.comment!=''"
+					ng-click="changeComment(subCom)">Komentariši</button>
+				<button	type="button" class="forumBtn darkerBlue" ng-show="commentTheme.comment==''"
+					disabled>Komentariši</button>
+			</div>
+		</div><br/>
+	</div><br/>
+</div>

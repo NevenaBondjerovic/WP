@@ -1,0 +1,52 @@
+<button type="button" class="forumBtn" ng-click="back('create')">  
+	<span class="glyphicon glyphicon-arrow-left"></span> Back </button>
+<h1 class="centered">Kreiranje novog podforuma:</h1>
+<div class="centered">
+	<form name="newObject">
+		<label>Naziv:</label>
+		<input type="text" class="form-control" name="newObject.name"
+			ng-model="newObject.name" ng-trim="false" required placeholder="Naziv..."><br/>
+		
+		<label>Opis: </label>
+		<input type="text" class="form-control" name="newObject.description"
+			ng-model="newObject.description" ng-trim="false" required placeholder="Opis..."><br/>
+		
+		<label>Ikonica: </label>
+		<input class="form-control" type="file"  accept="image/*"
+			name="newObject.iconPath" ng-model="newObject.iconPath" 
+			onchange="angular.element(this).scope().uploadFile(this.files)" app-filereader>
+        <div ng-if = "chosenFile!=undefined">
+            <br/><img ng-src="{{chosenFile}}" width="200" height="150" /><br/><br/>
+        </div>
+		<label>Pravila: </label>
+		<textarea rows="4" cols="50" ng-model="newObject.rules"  name="newObject.rules" 
+			placeholder="Pravila..." class="form-control" ng-trim="false"></textarea><br/>
+
+		<label>Odgovorni moderator: </label>
+		<input type="text" class="form-control" name="newObject.manager"
+			ng-model="user.username" disabled><br/>
+
+		<label>Ostali moderatori: </label>
+		<table class="forumStyle">
+			<tr ng-repeat="ma in managersAndAdmins" ng-show="ma.username!=user.username">
+				<td>{{ma.username}}</td>
+				<td>{{ma.name}} {{ma.surname}}</td>
+				<td><button type="button" class="btn btn-default" 
+					ng-click="addManagerToList(ma)" 
+					ng-disabled="ma.added==true">
+					Dodaj <span class="glyphicon glyphicon-plus"></span></button></td>
+				<td><button type="button" class="btn btn-default" 
+					ng-click="removeManagerFromList(ma)" ng-disabled="ma.added==false">
+					Obriši <span class="glyphicon glyphicon-remove"></span></button></td>	
+			</tr>
+		</table>
+		
+		
+				
+		<br/><br/>
+
+		<button type="submit" class="btn btn-default com-sm-3" 
+			ng-click="createForum()">Kreiraj</button>
+	</form><br/><br/>
+
+</div>
